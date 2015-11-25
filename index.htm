@@ -15,93 +15,30 @@
 				border-botttom : solid 3px #000;
 			}
 		</style>
+		<script src="initialize.js"></script>
+		<script src="resize.js"></script>
+		<script src="brick.js"></script>
+		<script src="keyboard.js"></script>
 	</head>
 	
 	<body>
 	
-		<canvas id="can" width="600" height="600"></canvas>
+		<canvas id="can" width="800" height="600"></canvas>
 		
 		<script>
+			
 			var canvas = document.getElementById("can");
 			var context = canvas.getContext("2d");
 
-			var fullHeight = 600;
-			var brickWidth = 100;
-			var brickHeight = 30;
-			var posLeft = 100;
-			var brickVal = 12;
-			
-			var userVal = 0;
-			var x = 10;
-			function draw()
+			function refresh()
 			{
-				if (x + brickHeight > fullHeight)
-				{
-					alert("GAME OVER !!");
-					x = 10;
-				}
-			
-				context.beginPath();
-				context.clearRect(posLeft, x, brickWidth, brickHeight);
-				x = x + 1;
-				context.rect(
-					posLeft,  // left
-					x,	 // top
-					brickWidth, // width
-					brickHeight	 // height
-				);
-				context.fillStyle = "#f00";
-				context.fill();
-				// Text
-				context.fillStyle = "#000";
-				context.font = "20px arial";
-				context.textAlign = "center";
-				context.fillText("1 + 1", brickWidth/2 + posLeft, brickHeight/4*3 + x);
-				context.closePath();
+				Bricks.forEach(
+					function(brick) { 
+						brick.draw(context);
+				});
 			}
 			
-			document.addEventListener("keydown", keyDown, false);
-			
-			function keyDown(e) 
-			{
-				if (e.keyCode == 13)
-				{
-					// enter
-					if (userVal == brickVal)
-					{
-						alert("cool !");
-					}
-					userVal = 0;
-				}
-				else
-				{
-				var zeroValue = 0;
-					if (e.keyCode >= 48 && e.keyCode <= 57)
-					{
-						// Numbers (not numpad)
-						// 0 => 48
-						// ...
-						// 9 => 57
-						zeroValue = 48;
-					}
-					else if (e.keyCode >= 96 && e.keyCode <= 105)
-					{
-						// Numbers (numpad)
-						// 0 => 96
-						// ...
-						// 9 => 105
-						zeroValue = 96;
-					}
-					else
-						return;
-						
-					var currentValString = userVal.toString();
-					currentValString = currentValString + (e.keyCode-zeroValue).toString();
-					userVal = parseInt(currentValString);
-				}
-			}
-			
-			setInterval(draw, 10);
+			initialize();
 			
 		</script>
 		
