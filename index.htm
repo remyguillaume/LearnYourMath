@@ -26,18 +26,8 @@
 		<canvas id="can" width="800" height="600"></canvas>
 		
 		<script>
-			
 			var canvas = document.getElementById("can");
 			var context = canvas.getContext("2d");
-
-			function refresh()
-			{
-				Bricks.forEach(
-					function(brick) { 
-						brick.draw(context);
-				});
-			}
-			
 			initialize();
 			
 		</script>

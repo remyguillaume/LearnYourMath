@@ -11,6 +11,8 @@ function keyDown(e)
 			{
 				//alert("solved !");
 				brick.solved = true;
+				if (level > 10)
+					level--;
 				createNewBrick();
 			}
 		});

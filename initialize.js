@@ -1,4 +1,5 @@
 function initialize() {
+
 	resizeCanvas();
 
 	// Create bricks
@@ -6,4 +7,12 @@ function initialize() {
 	createNewBrick();
 	
 	setInterval(refresh, 10);
+}
+
+function refresh()
+{
+	Bricks.forEach(
+		function(brick) { 
+			brick.draw(context);
+	});
 }
