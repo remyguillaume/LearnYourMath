@@ -6,17 +6,7 @@ function keyDown(e)
 	if (e.keyCode == 13)
 	{
 		// enter
-		Bricks.forEach(function(brick) {
-			if (!brick.solved && userVal == brick.value)
-			{
-				//alert("solved !");
-				brick.solved = true;
-				if (level > 10)
-					level--;
-				createNewBrick();
-			}
-		});
-		userVal = 0;
+		ValidateValue();
 	}
 	else
 	{
@@ -43,5 +33,21 @@ function keyDown(e)
 		var currentValString = userVal.toString();
 		currentValString = currentValString + val.toString();
 		userVal = parseInt(currentValString);
+		ValidateValue();
 	}
+}
+
+function ValidateValue() 
+{
+	Bricks.forEach(function(brick) {
+		if (!brick.solved && userVal == brick.value)
+		{
+			//alert("solved !");
+			brick.solved = true;
+			if (level > 10)
+				level--;
+			createNewBrick();
+		}
+	});
+	userVal = 0;
 }
