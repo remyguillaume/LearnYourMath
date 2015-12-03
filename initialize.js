@@ -1,3 +1,6 @@
+var timer ;
+var initialRefreshTime = 100;
+
 function initialize() {
 
 	resizeCanvas();
@@ -6,7 +9,7 @@ function initialize() {
 	createNewBrick();
 	createNewBrick();
 	
-	setInterval(refresh, 10);
+	timer = setInterval(refresh, initialRefreshTime);
 }
 
 function refresh()
@@ -15,4 +18,10 @@ function refresh()
 		function(brick) { 
 			brick.draw(context);
 	});
+}
+
+function increaseLevel() {
+	level++;
+	clearInterval(timer);
+	timer = setInterval(refresh, initialRefreshTime-(level*3));
 }

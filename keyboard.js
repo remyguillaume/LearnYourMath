@@ -44,10 +44,9 @@ function ValidateValue()
 		{
 			//alert("solved !");
 			brick.solved = true;
-			if (level > 10)
-				level--;
+			userVal = 0;
+			increaseLevel();
 			createNewBrick();
 		}
 	});
-	userVal = 0;
 }
