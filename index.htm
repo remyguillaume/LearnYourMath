@@ -4,29 +4,85 @@
 		<meta charset="utf-8" />
 		<title>PalooMath</title>
 		<style>
+			body {
+				font-family : tahoma;
+				font-size : 14px;
+			}
 			* {
 				padding : 0;
 				margin : 0;
 			}
+			#content {
+				position : relative;
+				margin : auto;
+				margin-top : 20px;
+				width : 1000px;
+				height : 845px;
+			}
 			#rules {
 				position : absolute;
-				left : 10px;
-				width : 200px;
-				height : 500px;
-				top : 50px;
+				left : 0px;
+				width : 350px;
+				top : 0px;
 			}
 			canvas {
 				position : absolute;
-				right : 20px;
-				top : 50px;
+				right : 0px;
+				top : 0px;
 				background : #eee;
 				display : block;
-				border : solid 10px #000;				
+				border : solid 10px #000;		
 			}
+			p {
+				margin-bottom : 20px;
+				color : #333;
+				text-align : justify;
+			}
+			#nsc {
+				position : absolute;
+				bottom : 0px;
+				right : 0px;
+				width : 620px;
+			}
+			#score {
+				float : right;
+				text-align : left;
+				font-weight : normal;
+				font-size : 16px;
+			}
+			#sc {
+				font-weight : bold;
+				font-size : 20px;
+			}
+			input, label, button {
+				margin-right : 10px;
+				margin-top : 10px;
+			}
+			
+			input[type=text] {
+				width : 40px;
+				padding : 1px;
+				text-align : center;
+			}
+			
+			#config {
+				padding : 20px;
+				border : solid 1px #333;
+			}
+			
+			p.inf {
+				font-style : italic;
+				font-size : 11px;
+				margin-top : 20px;
+			}
+			
+			button {
+				margin-top : 30px;
+			}
+
 		</style>
-		<script src="initialize.js"></script>
-		<script src="resize.js"></script>
 		<script src="brick.js"></script>
+		<script src="initialize.js"></script>
 		<script src="keyboard.js"></script>
 	</head>
 	
@@ -34,16 +90,27 @@
 
 		<div id="content">
 			<div id="rules">
-				<p>Paloo Math est un mini jeu dont les règles sont très simples : des calculs tombent, et il faut entrer le résultat du calcul avant que la case n'arrive tout en bas.</p>
-				<p>J'ai créé ce mini-jeu pour que ma fille révise ses caluls de façon ludique. Peut-être que vos enfants aimeront cela aussi ! :-)</p>
+				<p>Entrainez votre calcul mental avec <b>Paloo-Maths</b> !</p>
+				<p>Les règles sont très simples:<br/>
+				Entrez le résultat du calcul avant qu'il n'arrive tout en bas.</p>
+				<p>A vous de jouer !</p>
+				<div id="config">
+					<input type="checkbox" name="additions" id="additions" checked />Additions<br/>
+					<input type="checkbox" name="soustractions" id="soustractions" checked />Soustractions<br/>
+					<label>Valeur maximale des opérandes :</label><input type="text" name="maxVal" id="maxVal" value="10" /><br/>
+					<button onclick="initialize()">C'est parti !</button>
+				</div>
+
+				<p class="inf">J'ai créé ce mini-jeu pour que mes enfants révisent leurs calculs de façon ludique. Peut-être que les votres apprécieront aussi ! :-)</p>
+				</div>
+			<canvas id="can" width="600" height="800"></canvas>
+			<div id="nsc">
+				<div id="score">Score : <span id="sc">0</span></div>
 			</div>
-			<canvas id="can" width="800" height="600"></canvas>
 		</div>
 		<script>
 			var canvas = document.getElementById("can");
 			var context = canvas.getContext("2d");
-			initialize();
-			
 		</script>
 		
 	</body>

@@ -1,6 +1,7 @@
-var Bricks = [];
-var level = 1;
-var maxValue = 10;
+var Bricks;
+var level;
+var maxValue;
+var generateLeft;
 
 function Brick(left, calcul, value, bgColor, textColor) {
 	this.width = 100;
@@ -18,8 +19,9 @@ Brick.prototype.draw = function(context) {
 	
 	if (!this.solved && this.top + this.height > this.maxHeight)
 	{
-		alert("GAME OVER !!");
-		this.solved = true;
+		alert("Partie terminée !\r\nBravo, vous avez obtenu " + (level-1) + " points ! ");
+		clearInterval(timer);
+		return;
 	}
 
 	context.beginPath();
@@ -43,12 +45,18 @@ Brick.prototype.draw = function(context) {
 }
 
 function createNewBrick() {
-	var left = Math.floor((Math.random() * (Brick.prototype.maxWidth - 100)) + 1);
-	var o1 = Math.floor((Math.random() * maxValue));
-	var o2 = Math.floor((Math.random() * maxValue));
-	var op = "+";
-	if (Math.random() < 0.5)
-		op = "-";
+	var left;
+	if (generateLeft)
+		left = Math.floor((Math.random() * (Brick.prototype.maxWidth/2 - 100)) + 1);
+	else
+		left = Math.floor((Math.random() * (Brick.prototype.maxWidth/2 - 100)) + Brick.prototype.maxWidth/2);
+	generateLeft = !generateLeft;
+	
+	var o1 = Math.floor(Math.random() * maxValue+1);
+	var o2 = Math.floor(Math.random() * maxValue+1);
+	
+	var i = Math.floor(Math.random() * possibleOperators.length);
+	var op = possibleOperators[i];
 		
 	if (op == "-")
 	{
@@ -67,7 +75,7 @@ function createNewBrick() {
 	
 	// 16777215 - 8388607
 	var randomcolor = Math.floor(Math.random()*16777215);
-	var bgColor = '#'+randomcolor.toString(16);
+	var bgColor = '#'+('000000'+randomcolor.toString(16)).slice(-6);
 	var textColor = "#000";
 	if (randomcolor < 8388607)
 		textColor = "#FFF";
