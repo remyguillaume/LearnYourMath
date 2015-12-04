@@ -6,7 +6,7 @@ function keyDown(e)
 	if (e.keyCode == 13)
 	{
 		// enter
-		ValidateValue();
+		userVal = 0;
 	}
 	else
 	{
@@ -49,4 +49,9 @@ function ValidateValue()
 			createNewBrick();
 		}
 	});
+	
+	if (userVal > maxValue*2)
+	{
+		userVal = 0;
+	}
 }

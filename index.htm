@@ -8,11 +8,20 @@
 				padding : 0;
 				margin : 0;
 			}
+			#rules {
+				position : absolute;
+				left : 10px;
+				width : 200px;
+				height : 500px;
+				top : 50px;
+			}
 			canvas {
+				position : absolute;
+				right : 20px;
+				top : 50px;
 				background : #eee;
 				display : block;
-				margin : 0 auto;
-				border-botttom : solid 3px #000;
+				border : solid 10px #000;				
 			}
 		</style>
 		<script src="initialize.js"></script>
@@ -22,9 +31,14 @@
 	</head>
 	
 	<body>
-	
-		<canvas id="can" width="800" height="600"></canvas>
-		
+
+		<div id="content">
+			<div id="rules">
+				<p>Paloo Math est un mini jeu dont les règles sont très simples : des calculs tombent, et il faut entrer le résultat du calcul avant que la case n'arrive tout en bas.</p>
+				<p>J'ai créé ce mini-jeu pour que ma fille révise ses caluls de façon ludique. Peut-être que vos enfants aimeront cela aussi ! :-)</p>
+			</div>
+			<canvas id="can" width="800" height="600"></canvas>
+		</div>
 		<script>
 			var canvas = document.getElementById("can");
 			var context = canvas.getContext("2d");

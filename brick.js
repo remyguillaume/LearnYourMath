@@ -1,5 +1,6 @@
 var Bricks = [];
 var level = 1;
+var maxValue = 10;
 
 function Brick(left, calcul, value, bgColor, textColor) {
 	this.width = 100;
@@ -43,8 +44,8 @@ Brick.prototype.draw = function(context) {
 
 function createNewBrick() {
 	var left = Math.floor((Math.random() * (Brick.prototype.maxWidth - 100)) + 1);
-	var o1 = Math.floor((Math.random() * 10));
-	var o2 = Math.floor((Math.random() * 10));
+	var o1 = Math.floor((Math.random() * maxValue));
+	var o2 = Math.floor((Math.random() * maxValue));
 	var op = "+";
 	if (Math.random() < 0.5)
 		op = "-";
@@ -64,11 +65,12 @@ function createNewBrick() {
 	if (op == "-")
 		value = o1 - o2;
 	
-	// 16777215
-	var randomcolor = Math.floor(Math.random()*8388607);
+	// 16777215 - 8388607
+	var randomcolor = Math.floor(Math.random()*16777215);
 	var bgColor = '#'+randomcolor.toString(16);
-	randomcolor = 8388607 + randomcolor;
-	var textColor = '#'+randomcolor.toString(16);
+	var textColor = "#000";
+	if (randomcolor < 8388607)
+		textColor = "#FFF";
 	
 	Bricks.push(new Brick(left, calcul, value, bgColor, textColor));
 }
