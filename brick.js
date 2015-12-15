@@ -51,27 +51,52 @@ function createNewBrick() {
 	else
 		left = Math.floor((Math.random() * (Brick.prototype.maxWidth/2 - 100)) + Brick.prototype.maxWidth/2);
 	generateLeft = !generateLeft;
-	
-	var o1 = Math.floor(Math.random() * maxValue+1);
-	var o2 = Math.floor(Math.random() * maxValue+1);
-	
+
+	// Random operator
 	var i = Math.floor(Math.random() * possibleOperators.length);
 	var op = possibleOperators[i];
-		
-	if (op == "-")
+	
+	// Random operandes
+	var o1, o2;
+	if (op == "x")
 	{
-		// Bigger number sould come firt
-		if (o1 < o2)
+		// Get random number for multiplications
+		var j = Math.floor(Math.random() * possibleMultiplications.length);
+		o1 = possibleMultiplications[j];
+		o2 = Math.floor(Math.random() * 10);
+	}
+	else
+	{
+		// Get random numbers for additions/subtractions
+		o1 = Math.floor(Math.random() * maxValue+1);
+		o2 = Math.floor(Math.random() * maxValue+1);
+		
+		if (op == "-")
 		{
-			var o3 = o1;
-			o1 = o2;
-			o2 = o3;
+			// Bigger number sould come firt
+			if (o1 < o2)
+			{
+				var o3 = o1;
+				o1 = o2;
+				o2 = o3;
+			}
 		}
 	}
+		
 	var calcul = o1.toString() + " " + op + " " + o2.toString();
-	var value = o1 + o2;
-	if (op == "-")
-		value = o1 - o2;
+	var value;
+	switch (op)
+	{
+		case "+":
+			value = o1 + o2;
+			break;
+		case "-":
+			value = o1 - o2;
+			break;
+		case "x":
+			value = o1 * o2;
+			break;
+	}
 	
 	// 16777215 - 8388607
 	var randomcolor = Math.floor(Math.random()*16777215);

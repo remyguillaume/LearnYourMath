@@ -1,6 +1,7 @@
 var timer ;
 var initialRefreshTime = 100;
 var possibleOperators;
+var possibleMultiplications;
 
 function initialize() {
 
@@ -14,6 +15,18 @@ function initialize() {
 		possibleOperators.push("+");
 	if (document.getElementById("soustractions").checked)
 		possibleOperators.push("-");
+	if (document.getElementById("multiplications").checked)
+	{
+		possibleOperators.push("x");
+		possibleMultiplications = [];
+		
+		for (i=1; i<=10; i++)
+		{
+			var id = "m" + i;
+			if (document.getElementById(id).checked)
+				possibleMultiplications.push(i);
+		}
+	}
 	
 	maxValue = document.getElementById("maxVal").value;
 	
@@ -24,6 +37,9 @@ function initialize() {
 	if (timer != null)
 		clearInterval(timer);
 	timer = setInterval(refresh, initialRefreshTime);
+	
+	// Force focus out of the button (otherwise "enter" will restart a new game)
+	document.getElementById("can").focus();
 }
 
 function refresh()
@@ -35,10 +51,14 @@ function refresh()
 }
 
 function increaseLevel() {
-	level++;
-	document.getElementById("sc").innerHTML = level-1;
-	clearInterval(timer);
-	timer = setInterval(refresh, initialRefreshTime-(level*3));
+	if (level < 30)
+	{
+		level++;
+		document.getElementById("sc").innerHTML = level-1;
+		clearInterval(timer);
+		timer = setInterval(refresh, initialRefreshTime-(level*3));
+	}
+	// Otherwise the game becomes to speedy !
 }
 
 function resetGame() {

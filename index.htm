@@ -79,6 +79,10 @@
 			button {
 				margin-top : 30px;
 			}
+			
+			input.m {
+				margin : 2px;
+			}
 
 		</style>
 		<script src="brick.js"></script>
@@ -98,12 +102,25 @@
 					<input type="checkbox" name="additions" id="additions" checked />Additions<br/>
 					<input type="checkbox" name="soustractions" id="soustractions" checked />Soustractions<br/>
 					<label>Valeur maximale des opérandes :</label><input type="text" name="maxVal" id="maxVal" value="10" /><br/>
+					<input type="checkbox" name="multiplications" id="multiplications" />Multiplications<br/>
+					Tables : <br/>
+					<input type="checkbox" name="m1" id="m1" class="m" />1
+					<input type="checkbox" name="m2" id="m2" class="m" />2
+					<input type="checkbox" name="m3" id="m3" class="m" />3
+					<input type="checkbox" name="m4" id="m4" class="m" />4
+					<input type="checkbox" name="m5" id="m5" class="m" />5
+					<input type="checkbox" name="m6" id="m6" class="m" />6
+					<input type="checkbox" name="m7" id="m7" class="m" />7
+					<input type="checkbox" name="m8" id="m8" class="m" />8
+					<input type="checkbox" name="m9" id="m9" class="m" />9
+					<input type="checkbox" name="m10" id="m10" class="m" />10
+					<br/>
 					<button onclick="initialize()">C'est parti !</button>
 				</div>
 
 				<p class="inf">J'ai créé ce mini-jeu pour que mes enfants révisent leurs calculs de façon ludique. Peut-être que les votres apprécieront aussi ! :-)</p>
 				</div>
-			<canvas id="can" width="600" height="800"></canvas>
+			<canvas id="can" width="600" height="800" tabindex="1"></canvas>
 			<div id="nsc">
 				<div id="score">Score : <span id="sc">0</span></div>
 			</div>
