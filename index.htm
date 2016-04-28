@@ -3,88 +3,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>PalooMath</title>
-		<style>
-			body {
-				font-family : tahoma;
-				font-size : 14px;
-			}
-			* {
-				padding : 0;
-				margin : 0;
-			}
-			#content {
-				position : relative;
-				margin : auto;
-				margin-top : 20px;
-				width : 1000px;
-				height : 845px;
-			}
-			#rules {
-				position : absolute;
-				left : 0px;
-				width : 350px;
-				top : 0px;
-			}
-			canvas {
-				position : absolute;
-				right : 0px;
-				top : 0px;
-				background : #eee;
-				display : block;
-				border : solid 10px #000;		
-			}
-			p {
-				margin-bottom : 20px;
-				color : #333;
-				text-align : justify;
-			}
-			#nsc {
-				position : absolute;
-				bottom : 0px;
-				right : 0px;
-				width : 620px;
-			}
-			#score {
-				float : right;
-				text-align : left;
-				font-weight : normal;
-				font-size : 16px;
-			}
-			#sc {
-				font-weight : bold;
-				font-size : 20px;
-			}
-			input, label, button {
-				margin-right : 10px;
-				margin-top : 10px;
-			}
-			
-			input[type=text] {
-				width : 40px;
-				padding : 1px;
-				text-align : center;
-			}
-			
-			#config {
-				padding : 20px;
-				border : solid 1px #333;
-			}
-			
-			p.inf {
-				font-style : italic;
-				font-size : 11px;
-				margin-top : 20px;
-			}
-			
-			button {
-				margin-top : 30px;
-			}
-			
-			input.m {
-				margin : 2px;
-			}
-
-		</style>
+		<link rel="stylesheet" type="text/css" href="style.css" />
 		<script src="brick.js"></script>
 		<script src="initialize.js"></script>
 		<script src="keyboard.js"></script>
@@ -120,7 +39,7 @@
 
 				<p class="inf">J'ai créé ce mini-jeu pour que mes enfants révisent leurs calculs de façon ludique. Peut-être que les votres apprécieront aussi ! :-)</p>
 				</div>
-			<canvas id="can" width="600" height="800" tabindex="1"></canvas>
+			<canvas id="can" width="600" height="700" tabindex="1"></canvas>
 			<div id="nsc">
 				<div id="score">Score : <span id="sc">0</span></div>
 			</div>

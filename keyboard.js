@@ -39,6 +39,9 @@ function keyDown(e)
 
 function ValidateValue() 
 {
+	var isFirstPart = false;
+	var userValString = userVal.toString();
+	
 	Bricks.forEach(function(brick) {
 		if (!brick.solved && userVal == brick.value)
 		{
@@ -48,9 +51,17 @@ function ValidateValue()
 			increaseLevel();
 			createNewBrick();
 		}
+		else
+		{
+			// If the character is equal to the first part of any value
+			// Then we don't have to reset useVal
+			var brickValString = brick.value.toString().substr(0, userValString.length);
+			if (brickValString == userValString)
+				isFirstPart = true;
+		}
 	});
 	
-	if (userVal > maxValue*2)
+	if (!isFirstPart)
 	{
 		userVal = 0;
 	}
